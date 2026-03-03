@@ -2,7 +2,8 @@
 
 ## Para
 
-Clientes que buscam serviços de beleza por proximidade — mulheres, homens, adolescentes e pais agendando para seus filhos — e para salões de beleza locais de todos os portes, desde profissionais autônomos até redes, que precisam de visibilidade digital e gestão de agenda.
+Para clientes que buscam serviços de beleza por proximidade e para salões locais de todos os portes que precisam de visibilidade digital e agenda online.
+
 
 ## Que
 
@@ -10,7 +11,7 @@ Perdem tempo ligando ou enviando mensagens no WhatsApp para verificar disponibil
 
 ## O MeuSalão
 
-É a plataforma que centraliza descoberta, comparação e agendamento de serviços de beleza em um único lugar, conectando clientes a salões próximos com transparência de preços, avaliações reais e confirmação imediata de horário.
+É uma plataforma mobile-first que centraliza descoberta, comparação e agendamento de serviços de beleza, conectando clientes a salões próximos em um único lugar.
 
 ## Que
 
