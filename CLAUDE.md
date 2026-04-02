@@ -37,3 +37,4 @@ O MeuSalão começa como plataforma de visibilidade e agendamento, mas a priorid
 - [fases_roadmap_estrategico.md](fases_roadmap_estrategico.md) — Roadmap estratégico de negócio
 - [userstory.md](userstory.md) — User Stories do MVP Fase 1
 - [project-model-canvas.html](project-model-canvas.html) — Project Model Canvas
+- [PlanejamentoUsers.txt](PlanejamentoUsers.txt) — Link para planilha editável de planejamento de User Stories
