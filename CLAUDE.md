@@ -30,3 +30,10 @@ O MeuSalão começa como plataforma de visibilidade e agendamento, mas a priorid
 - [personas.md](personas.md) — Personas de clientes e donos de salão
 - [segmentos.md](segmentos.md) — Segmentos de cliente e subcategorias de serviço
 - [é, não é, faz, não faz.md](é,%20não%20é,%20faz,%20não%20faz.md) — Escopo do produto
+- [visaodoprotudo.md](visaodoprotudo.md) — Visão do produto
+- [jobstobedone.md](jobstobedone.md) — Jobs to Be Done por segmento
+- [jornadas.md](jornadas.md) — Jornadas de usuário (MVP Fase 1)
+- [detalhamentojornadas.md](detalhamentojornadas.md) — Jornadas de usuário detalhadas (MVP Fase 1)
+- [fases_roadmap_estrategico.md](fases_roadmap_estrategico.md) — Roadmap estratégico de negócio
+- [userstory.md](userstory.md) — User Stories do MVP Fase 1
+- [project-model-canvas.html](project-model-canvas.html) — Project Model Canvas
