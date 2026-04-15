@@ -1,24 +1,27 @@
-import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
 import type { AgendamentoSalao } from "@/lib/mock-data";
 
 export default function AgendaItem({ agendamento, salaoId }: { agendamento: AgendamentoSalao; salaoId: string }) {
   return (
-    <a href={`/salao/agendamento/${agendamento.id}?salao=${salaoId}`}>
-      <div className="flex items-center gap-3 py-3 border-b border-gray-50 last:border-0 active:bg-gray-50 rounded-lg px-1 transition-colors">
+    <Link href={`/salao/agendamento/${agendamento.id}?salao=${salaoId}`}>
+      <div className="flex items-center gap-4 py-3 px-2 rounded-xl hover:bg-gray-50 transition-colors border-b border-gray-50 last:border-0">
         <div className="w-14 text-center shrink-0">
-          <span className="font-semibold text-gray-900 text-sm">{agendamento.hora}</span>
+          <span className="font-bold text-gray-900">{agendamento.hora}</span>
         </div>
         <div className="flex-1">
-          <p className="font-medium text-gray-900 text-sm">{agendamento.cliente}</p>
+          <p className="font-semibold text-gray-900 text-sm">{agendamento.cliente}</p>
           <p className="text-xs text-gray-500">{agendamento.servico}</p>
         </div>
-        <Badge
-          variant={agendamento.status === "confirmado" ? "default" : "secondary"}
-          className={`text-xs shrink-0 ${agendamento.status === "confirmado" ? "bg-green-100 text-green-700 hover:bg-green-100" : "bg-amber-100 text-amber-700 hover:bg-amber-100"}`}
+        <span
+          className={`text-xs font-medium px-3 py-1 rounded-full shrink-0 ${
+            agendamento.status === "confirmado"
+              ? "bg-green-100 text-green-700"
+              : "bg-amber-100 text-amber-700"
+          }`}
         >
           {agendamento.status === "confirmado" ? "Confirmado" : "Pendente"}
-        </Badge>
+        </span>
       </div>
-    </a>
+    </Link>
   );
 }

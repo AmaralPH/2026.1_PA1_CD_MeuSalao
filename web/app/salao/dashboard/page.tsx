@@ -1,99 +1,87 @@
 import Link from "next/link";
-import { Bell, Calendar, TrendingUp, Users } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { Calendar, TrendingUp, Users, DollarSign, Plus, Bell } from "lucide-react";
+import Navbar from "@/components/navbar";
 import AgendaItem from "@/components/agenda-item";
 import { saloes } from "@/lib/mock-data";
-import { Scissors } from "lucide-react";
 
 export default function DashboardPage() {
-  // Mock: dashboard of Salão da Márcia
   const salao = saloes[0];
   const confirmados = salao.agenda.filter((a) => a.status === "confirmado").length;
   const pendentes = salao.agenda.filter((a) => a.status === "pendente").length;
 
+  const metricas = [
+    { icon: Calendar, label: "Agendamentos Hoje", valor: salao.agenda.length.toString(), cor: "bg-blue-500" },
+    { icon: TrendingUp, label: "Esta Semana", valor: "23", cor: "bg-purple-500" },
+    { icon: Users, label: "Total de Clientes", valor: "156", cor: "bg-pink-500" },
+    { icon: DollarSign, label: "Receita do Mês", valor: "R$ 8.4k", cor: "bg-green-500" },
+  ];
+
+  const acoes = [
+    { icon: Plus, label: "Novo Agendamento", desc: "Adicionar cliente manualmente", href: "/salao/dashboard" },
+    { icon: Calendar, label: "Gerenciar Serviços", desc: "Editar preços e horários", href: "/salao/perfil" },
+  ];
+
+  // suppress unused variable warning
+  void confirmados;
+
   return (
-    <div className="max-w-md mx-auto min-h-screen bg-gray-50">
-      {/* Header */}
-      <div className="bg-white border-b border-gray-100 px-4 pt-4 pb-3">
-        <div className="flex items-center justify-between mb-1">
-          <div className="flex items-center gap-2">
-            <div className="w-7 h-7 bg-blue-600 rounded-lg flex items-center justify-center">
-              <Scissors className="w-4 h-4 text-white" />
+    <div className="min-h-screen bg-gray-50">
+      <Navbar paginaAtiva="inicio" ladoSalao />
+
+      {/* Purple hero banner */}
+      <div className="bg-gradient-to-r from-purple-700 to-purple-500 px-6 py-10">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-bold text-white">{salao.nome}</h1>
+            <p className="text-purple-100 mt-1">Dashboard do Salão</p>
+          </div>
+          {pendentes > 0 && (
+            <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium">
+              <Bell className="w-4 h-4" />
+              {pendentes} pendente{pendentes > 1 ? "s" : ""}
             </div>
-            <span className="font-bold text-gray-900 text-sm">MeuSalão</span>
-          </div>
-          <div className="relative">
-            <Bell className="w-5 h-5 text-gray-600" />
-            {pendentes > 0 && (
-              <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full text-white text-[10px] flex items-center justify-center font-bold">
-                {pendentes}
-              </span>
-            )}
-          </div>
+          )}
         </div>
-        <p className="text-xs text-gray-500">Olá, Márcia 👋</p>
       </div>
 
-      <div className="px-4 py-4 space-y-4">
-        {/* Banner novo agendamento */}
-        <Link href={`/salao/agendamento/${salao.agenda.find(a => a.status === "pendente")?.id ?? "ag3"}?salao=${salao.id}`}>
-          <div className="bg-blue-600 rounded-2xl p-4 text-white flex items-center gap-3">
-            <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center shrink-0">
-              <Bell className="w-5 h-5 text-white" />
+      <div className="max-w-7xl mx-auto px-6 py-8 space-y-8">
+        {/* Metrics */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {metricas.map(({ icon: Icon, label, valor, cor }) => (
+            <div key={label} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
+              <div className={`w-12 h-12 ${cor} rounded-2xl flex items-center justify-center mb-4`}>
+                <Icon className="w-6 h-6 text-white" />
+              </div>
+              <p className="text-2xl font-bold text-gray-900">{valor}</p>
+              <p className="text-sm text-gray-500 mt-1">{label}</p>
             </div>
-            <div className="flex-1">
-              <p className="font-semibold text-sm">Novo agendamento!</p>
-              <p className="text-blue-100 text-xs">Juliana M. quer agendar escova simples — 11h</p>
-            </div>
-            <Badge className="bg-white text-blue-600 hover:bg-white text-xs font-bold">Novo</Badge>
-          </div>
-        </Link>
+          ))}
+        </div>
 
-        {/* Métricas */}
-        <div className="grid grid-cols-2 gap-3">
-          <div className="bg-white rounded-2xl p-4 border border-gray-100">
-            <div className="flex items-center gap-2 mb-2">
-              <Calendar className="w-4 h-4 text-blue-500" />
-              <span className="text-xs text-gray-500">Hoje</span>
-            </div>
-            <p className="text-2xl font-bold text-gray-900">{salao.agenda.length}</p>
-            <p className="text-xs text-gray-500">agendamentos</p>
-          </div>
-          <div className="bg-white rounded-2xl p-4 border border-gray-100">
-            <div className="flex items-center gap-2 mb-2">
-              <TrendingUp className="w-4 h-4 text-green-500" />
-              <span className="text-xs text-gray-500">Confirmados</span>
-            </div>
-            <p className="text-2xl font-bold text-gray-900">{confirmados}</p>
-            <p className="text-xs text-gray-500">de {salao.agenda.length} hoje</p>
-          </div>
-          <div className="bg-white rounded-2xl p-4 border border-gray-100">
-            <div className="flex items-center gap-2 mb-2">
-              <Users className="w-4 h-4 text-purple-500" />
-              <span className="text-xs text-gray-500">Buscas</span>
-            </div>
-            <p className="text-2xl font-bold text-gray-900">{salao.buscasSemana}</p>
-            <p className="text-xs text-gray-500">esta semana</p>
-          </div>
-          <div className="bg-white rounded-2xl p-4 border border-gray-100">
-            <div className="flex items-center gap-2 mb-2">
-              <Bell className="w-4 h-4 text-amber-500" />
-              <span className="text-xs text-gray-500">Pendentes</span>
-            </div>
-            <p className="text-2xl font-bold text-gray-900">{pendentes}</p>
-            <p className="text-xs text-gray-500">a confirmar</p>
-          </div>
+        {/* Quick actions */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {acoes.map(({ icon: Icon, label, desc, href }) => (
+            <Link key={label} href={href}>
+              <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 hover:border-purple-200 hover:shadow-md transition-all cursor-pointer">
+                <div className="w-12 h-12 bg-purple-100 rounded-2xl flex items-center justify-center mb-3">
+                  <Icon className="w-6 h-6 text-purple-600" />
+                </div>
+                <p className="font-bold text-gray-900">{label}</p>
+                <p className="text-sm text-gray-500 mt-1">{desc}</p>
+              </div>
+            </Link>
+          ))}
         </div>
 
         {/* Agenda do dia */}
-        <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden">
-          <div className="px-4 py-3 border-b border-gray-50 flex items-center justify-between">
-            <h2 className="font-semibold text-gray-900 text-sm">Agenda de hoje</h2>
-            <Link href="/salao/perfil" className="text-xs text-blue-600 font-medium">
+        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+          <div className="px-6 py-4 border-b border-gray-50 flex items-center justify-between">
+            <h2 className="font-bold text-gray-900 text-lg">Agenda de hoje</h2>
+            <Link href="/salao/perfil" className="text-sm text-purple-600 font-medium hover:text-purple-700">
               Ver perfil público →
             </Link>
           </div>
-          <div className="px-3">
+          <div className="px-4 py-2">
             {salao.agenda.map((ag) => (
               <AgendaItem key={ag.id} agendamento={ag} salaoId={salao.id} />
             ))}

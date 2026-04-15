@@ -1,5 +1,4 @@
 import { Clock } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import type { Servico } from "@/lib/mock-data";
 
 interface ServicoItemProps {
@@ -9,22 +8,20 @@ interface ServicoItemProps {
 
 export default function ServicoItem({ servico, salaoId }: ServicoItemProps) {
   return (
-    <div className="flex items-center justify-between py-3 border-b border-gray-50 last:border-0">
-      <div className="flex-1 mr-4">
-        <p className="font-medium text-gray-900 text-sm">{servico.nome}</p>
-        <div className="flex items-center gap-1 mt-0.5">
-          <Clock className="w-3 h-3 text-gray-400" />
-          <span className="text-xs text-gray-400">{servico.duracao} min</span>
-        </div>
+    <div className="bg-white rounded-2xl border border-gray-100 p-4 shadow-sm hover:border-purple-200 transition-colors">
+      <div className="flex items-start justify-between mb-3">
+        <h3 className="font-bold text-gray-900">{servico.nome}</h3>
+        <span className="font-bold text-purple-600 text-lg">R$ {servico.preco}</span>
       </div>
-      <div className="flex items-center gap-3">
-        <span className="font-semibold text-gray-900 text-sm">R$ {servico.preco}</span>
-        <a href={`/cliente/${salaoId}/agendar?servico=${servico.id}`}>
-          <Button size="sm" variant="outline" className="text-xs h-8 px-3 border-blue-200 text-blue-600 hover:bg-blue-50">
-            Agendar
-          </Button>
-        </a>
+      <div className="flex items-center gap-1 text-sm text-gray-500 mb-4">
+        <Clock className="w-3.5 h-3.5" />
+        <span>{servico.duracao} minutos</span>
       </div>
+      <a href={`/cliente/${salaoId}/agendar?servico=${servico.id}`}>
+        <button className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2.5 rounded-xl transition-colors text-sm">
+          Agendar
+        </button>
+      </a>
     </div>
   );
 }

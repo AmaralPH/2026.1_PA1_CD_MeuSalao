@@ -1,7 +1,6 @@
 import Link from "next/link";
-import { MapPin, Clock, Calendar } from "lucide-react";
-import BackHeader from "@/components/back-header";
-import { Button } from "@/components/ui/button";
+import { MapPin, Clock, Calendar, ChevronLeft } from "lucide-react";
+import Navbar from "@/components/navbar";
 import { getSalao, formatarDataCompleta } from "@/lib/mock-data";
 import { notFound } from "next/navigation";
 
@@ -24,58 +23,67 @@ export default async function ConfirmarPage({
   const sucesso = `/cliente/sucesso?salao=${id}&servico=${servicoId}&dia=${dia}&hora=${hora}`;
 
   return (
-    <div className="max-w-md mx-auto min-h-screen bg-white">
-      <BackHeader titulo="Confirmar agendamento" href={`/cliente/${id}/agendar?servico=${servicoId}`} />
+    <div className="min-h-screen bg-gray-50">
+      <Navbar paginaAtiva="inicio" />
 
-      <div className="px-4 py-6">
-        <h2 className="font-semibold text-gray-900 mb-4">Resumo do agendamento</h2>
+      <div className="max-w-2xl mx-auto px-6 py-8">
+        <Link href={`/cliente/${id}/agendar?servico=${servicoId}`} className="flex items-center gap-1 text-gray-500 hover:text-gray-700 mb-6 text-sm">
+          <ChevronLeft className="w-4 h-4" />
+          Voltar
+        </Link>
 
-        {/* Card resumo */}
-        <div className="bg-gray-50 rounded-2xl p-4 mb-6 space-y-4">
-          <div>
-            <p className="text-xs text-gray-400 mb-0.5">Salão</p>
-            <p className="font-semibold text-gray-900">{salao.nome}</p>
-            <div className="flex items-center gap-1 mt-0.5">
-              <MapPin className="w-3 h-3 text-gray-400" />
-              <p className="text-xs text-gray-500">{salao.endereco}</p>
+        <h1 className="text-2xl font-bold text-gray-900 mb-6">Confirmar agendamento</h1>
+
+        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 mb-6">
+          <h2 className="font-semibold text-gray-700 mb-5">Resumo do agendamento</h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+            <div>
+              <p className="text-xs text-gray-400 font-medium uppercase tracking-wide mb-1">Salão</p>
+              <p className="font-bold text-gray-900">{salao.nome}</p>
+              <div className="flex items-center gap-1 mt-1">
+                <MapPin className="w-3.5 h-3.5 text-gray-400" />
+                <p className="text-sm text-gray-500">{salao.endereco}</p>
+              </div>
+            </div>
+            <div>
+              <p className="text-xs text-gray-400 font-medium uppercase tracking-wide mb-1">Serviço</p>
+              <p className="font-bold text-gray-900">{servico.nome}</p>
+              <div className="flex items-center gap-1 mt-1">
+                <Clock className="w-3.5 h-3.5 text-gray-400" />
+                <p className="text-sm text-gray-500">{servico.duracao} minutos</p>
+              </div>
+            </div>
+            <div>
+              <p className="text-xs text-gray-400 font-medium uppercase tracking-wide mb-1">Data</p>
+              <div className="flex items-center gap-2">
+                <Calendar className="w-4 h-4 text-purple-500" />
+                <p className="font-bold text-gray-900 capitalize">{formatarDataCompleta(dia)}</p>
+              </div>
+            </div>
+            <div>
+              <p className="text-xs text-gray-400 font-medium uppercase tracking-wide mb-1">Horário</p>
+              <div className="flex items-center gap-2">
+                <Clock className="w-4 h-4 text-purple-500" />
+                <p className="font-bold text-gray-900">{hora}</p>
+              </div>
             </div>
           </div>
 
-          <div className="border-t border-gray-200 pt-4">
-            <p className="text-xs text-gray-400 mb-0.5">Serviço</p>
-            <p className="font-semibold text-gray-900">{servico.nome}</p>
-            <div className="flex items-center gap-1 mt-0.5">
-              <Clock className="w-3 h-3 text-gray-400" />
-              <p className="text-xs text-gray-500">{servico.duracao} minutos</p>
-            </div>
-          </div>
-
-          <div className="border-t border-gray-200 pt-4">
-            <p className="text-xs text-gray-400 mb-0.5">Data e horário</p>
-            <div className="flex items-center gap-1.5">
-              <Calendar className="w-4 h-4 text-gray-500" />
-              <p className="font-semibold text-gray-900 capitalize">{formatarDataCompleta(dia)}</p>
-            </div>
-            <div className="flex items-center gap-1.5 mt-1">
-              <Clock className="w-4 h-4 text-gray-500" />
-              <p className="font-semibold text-gray-900">{hora}</p>
-            </div>
-          </div>
-
-          <div className="border-t border-gray-200 pt-4 flex items-center justify-between">
-            <p className="text-sm text-gray-600">Total</p>
-            <p className="text-lg font-bold text-gray-900">R$ {servico.preco}</p>
+          <div className="border-t border-gray-100 pt-5 flex items-center justify-between">
+            <p className="text-gray-600 font-medium">Total</p>
+            <p className="text-2xl font-bold text-purple-600">R$ {servico.preco}</p>
           </div>
         </div>
 
-        <p className="text-xs text-gray-400 text-center mb-6">
+        <p className="text-sm text-gray-400 text-center mb-6">
           Ao confirmar, você receberá um lembrete automático 24h antes do atendimento.
         </p>
 
         <Link href={sucesso}>
-          <Button className="w-full h-12 text-base font-semibold bg-blue-600 hover:bg-blue-700">
+          <button className="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 rounded-2xl transition-colors text-lg">
             Confirmar agendamento
-          </Button>
+          </button>
         </Link>
       </div>
     </div>

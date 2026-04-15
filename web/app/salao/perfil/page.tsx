@@ -1,119 +1,122 @@
 import Link from "next/link";
-import { Star, MapPin, Clock, Phone, Eye, TrendingUp, ChevronLeft } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
+import { Star, MapPin, Clock, Phone, Eye, TrendingUp, Pencil, Trash2 } from "lucide-react";
+import Navbar from "@/components/navbar";
 import AvaliacaoItem from "@/components/avaliacao-item";
 import { saloes } from "@/lib/mock-data";
 
 export default function PerfilPublicoPage() {
-  const salao = saloes[0]; // Salão da Márcia
+  const salao = saloes[0];
 
   return (
-    <div className="max-w-md mx-auto min-h-screen bg-white">
-      {/* Header */}
-      <header className="sticky top-0 z-10 bg-white border-b border-gray-100 px-4 py-3 flex items-center gap-3">
-        <Link href="/salao/dashboard" className="p-1 -ml-1 rounded-full hover:bg-gray-100 transition-colors">
-          <ChevronLeft className="w-5 h-5 text-gray-700" />
-        </Link>
-        <h1 className="font-semibold text-gray-900 text-base flex-1">Meu perfil público</h1>
-        <Badge className="bg-green-100 text-green-700 hover:bg-green-100 text-xs">Publicado</Badge>
-      </header>
+    <div className="min-h-screen bg-gray-50">
+      <Navbar paginaAtiva="salao" ladoSalao />
 
-      {/* Banner de visibilidade */}
-      <div className="mx-4 mt-4 bg-blue-50 border border-blue-100 rounded-xl px-4 py-3 flex items-start gap-3">
-        <TrendingUp className="w-4 h-4 text-blue-500 mt-0.5 shrink-0" />
-        <div>
-          <p className="text-sm font-medium text-blue-800">
-            Seu salão apareceu em <span className="font-bold">{salao.buscasSemana} buscas</span> esta semana
-          </p>
-          <p className="text-xs text-blue-600 mt-0.5">Clientes da região estão te encontrando!</p>
-        </div>
-      </div>
-
-      {/* Aviso de visualização */}
-      <div className="mx-4 mt-2 bg-amber-50 border border-amber-100 rounded-xl px-4 py-2 flex items-center gap-2">
-        <Eye className="w-3.5 h-3.5 text-amber-500 shrink-0" />
-        <p className="text-xs text-amber-700">Esta é a visão que seus clientes têm do seu salão.</p>
-      </div>
-
-      {/* Capa */}
-      <div className={`${salao.corCapa} h-44 relative mt-3`}>
-        <div className="absolute inset-0 bg-black/20" />
-        <div className="absolute bottom-4 left-4 right-4">
-          <h1 className="text-white font-bold text-xl">{salao.nome}</h1>
-          <p className="text-white/80 text-sm">{salao.tipo}</p>
-        </div>
-      </div>
-
-      {/* Info */}
-      <div className="px-4 py-4 border-b border-gray-100">
-        <div className="flex items-center gap-4 mb-3">
-          <div className="flex items-center gap-1">
-            <Star className="w-4 h-4 text-amber-400 fill-amber-400" />
-            <span className="font-semibold text-gray-900">{salao.nota}</span>
-            <span className="text-sm text-gray-400">({salao.totalAvaliacoes} avaliações)</span>
-          </div>
-          <div className="flex items-center gap-1 text-sm text-gray-500">
-            <MapPin className="w-3.5 h-3.5" />
-            <span>{salao.distancia}</span>
-          </div>
-        </div>
-        <p className="text-sm text-gray-600 leading-relaxed mb-3">{salao.descricao}</p>
-        <div className="flex flex-col gap-1.5 text-xs text-gray-500">
-          <div className="flex items-center gap-2">
-            <MapPin className="w-3.5 h-3.5 shrink-0" />
-            <span>{salao.endereco}</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <Clock className="w-3.5 h-3.5 shrink-0" />
-            <span>{salao.horarioFuncionamento}</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <Phone className="w-3.5 h-3.5 shrink-0" />
-            <span>{salao.telefone}</span>
+      {/* Purple hero */}
+      <div className="bg-gradient-to-r from-purple-700 to-purple-500 px-6 py-10">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex items-start justify-between">
+            <div>
+              <h1 className="text-3xl font-bold text-white">Gestão de Serviços</h1>
+              <p className="text-purple-100 mt-1">Gerencie os serviços oferecidos pelo seu salão</p>
+            </div>
+            <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white text-sm px-4 py-2 rounded-full">
+              <Eye className="w-4 h-4" />
+              <span>{salao.buscasSemana} buscas esta semana</span>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Tags */}
-      <div className="px-4 py-3 border-b border-gray-100">
-        <div className="flex flex-wrap gap-2">
-          {salao.tags.map((tag) => (
-            <Badge key={tag} variant="secondary" className="text-xs">{tag}</Badge>
-          ))}
+      <div className="max-w-7xl mx-auto px-6 py-8">
+        {/* Banner visibilidade */}
+        <div className="bg-blue-50 border border-blue-100 rounded-2xl px-6 py-4 flex items-center gap-3 mb-8">
+          <TrendingUp className="w-5 h-5 text-blue-500 shrink-0" />
+          <div>
+            <p className="text-sm font-semibold text-blue-800">
+              Seu salão apareceu em <strong>{salao.buscasSemana} buscas</strong> esta semana!
+            </p>
+            <p className="text-xs text-blue-600 mt-0.5">Clientes da região estão te encontrando no MeuSalão.</p>
+          </div>
         </div>
-      </div>
 
-      {/* Serviços */}
-      <div className="px-4 py-4 border-b border-gray-100">
-        <h2 className="font-semibold text-gray-900 mb-3">Serviços</h2>
-        <div className="space-y-0">
-          {salao.servicos.map((s, i) => (
-            <div key={s.id}>
-              <div className="flex items-center justify-between py-2.5">
-                <div>
-                  <p className="text-sm font-medium text-gray-900">{s.nome}</p>
-                  <div className="flex items-center gap-1 mt-0.5">
-                    <Clock className="w-3 h-3 text-gray-400" />
-                    <span className="text-xs text-gray-400">{s.duracao} min</span>
-                  </div>
+        {/* Salon info summary */}
+        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 mb-8">
+          <div className="flex items-start gap-6">
+            <div className="flex-1">
+              <h2 className="font-bold text-gray-900 text-xl mb-1">{salao.nome}</h2>
+              <p className="text-gray-500 text-sm mb-3">{salao.tipo}</p>
+              <div className="flex items-center gap-4 text-sm text-gray-600 mb-3">
+                <div className="flex items-center gap-1">
+                  <Star className="w-4 h-4 text-amber-400 fill-amber-400" />
+                  <span className="font-semibold">{salao.nota}</span>
+                  <span className="text-gray-400">({salao.totalAvaliacoes})</span>
                 </div>
-                <span className="font-semibold text-gray-900 text-sm">R$ {s.preco}</span>
+                <div className="flex items-center gap-1">
+                  <MapPin className="w-3.5 h-3.5 text-gray-400" />
+                  <span>{salao.distancia}</span>
+                </div>
               </div>
-              {i < salao.servicos.length - 1 && <Separator />}
+              <div className="space-y-1.5 text-sm text-gray-500">
+                <div className="flex items-center gap-2">
+                  <MapPin className="w-3.5 h-3.5 text-purple-400 shrink-0" />
+                  <span>{salao.endereco}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Clock className="w-3.5 h-3.5 text-purple-400 shrink-0" />
+                  <span>{salao.horarioFuncionamento}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Phone className="w-3.5 h-3.5 text-purple-400 shrink-0" />
+                  <span>{salao.telefone}</span>
+                </div>
+              </div>
+            </div>
+            <Link href="/cliente/salao-da-marcia" className="text-sm text-purple-600 font-medium hover:text-purple-700 whitespace-nowrap">
+              Ver como cliente →
+            </Link>
+          </div>
+        </div>
+
+        {/* Add service button */}
+        <button className="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 rounded-2xl mb-8 flex items-center justify-center gap-2 transition-colors text-lg">
+          + Adicionar Novo Serviço
+        </button>
+
+        {/* Services grid */}
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-xl font-bold text-gray-900">Seus Serviços</h2>
+          <span className="text-sm text-gray-500">{salao.servicos.length} serviços cadastrados</span>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
+          {salao.servicos.map((s) => (
+            <div key={s.id} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
+              <h3 className="font-bold text-gray-900 text-lg mb-2">{s.nome}</h3>
+              <div className="flex items-center gap-4 text-sm text-gray-600 mb-4">
+                <span className="flex items-center gap-1"><span className="text-gray-400">R$</span> <strong>R$ {s.preco}</strong></span>
+                <span className="flex items-center gap-1">
+                  <Clock className="w-3.5 h-3.5 text-gray-400" />
+                  {s.duracao} min
+                </span>
+              </div>
+              <div className="flex gap-2">
+                <button className="flex-1 flex items-center justify-center gap-2 border border-gray-200 text-gray-600 text-sm font-medium py-2 rounded-xl hover:border-purple-300 hover:text-purple-600 transition-colors">
+                  <Pencil className="w-3.5 h-3.5" />Editar
+                </button>
+                <button className="flex-1 flex items-center justify-center gap-2 border border-red-100 text-red-500 text-sm font-medium py-2 rounded-xl hover:bg-red-50 transition-colors">
+                  <Trash2 className="w-3.5 h-3.5" />Excluir
+                </button>
+              </div>
             </div>
           ))}
         </div>
-      </div>
 
-      {/* Avaliações */}
-      <div className="px-4 py-4 pb-8">
-        <h2 className="font-semibold text-gray-900 mb-3">
-          Avaliações <span className="text-gray-400 font-normal text-sm">({salao.totalAvaliacoes})</span>
-        </h2>
-        {salao.avaliacoes.map((av) => (
-          <AvaliacaoItem key={av.id} avaliacao={av} />
-        ))}
+        {/* Reviews */}
+        <h2 className="text-xl font-bold text-gray-900 mb-4">Avaliações dos Clientes</h2>
+        <div className="space-y-4">
+          {salao.avaliacoes.map((av) => (
+            <AvaliacaoItem key={av.id} avaliacao={av} />
+          ))}
+        </div>
       </div>
     </div>
   );

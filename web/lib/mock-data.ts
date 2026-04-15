@@ -29,6 +29,7 @@ export type Salao = {
   nota: number;
   totalAvaliacoes: number;
   corCapa: string; // tailwind bg color class
+  foto: string;
   tags: string[];
   precoMinimo: number;
   endereco: string;
@@ -68,6 +69,7 @@ export const saloes: Salao[] = [
     nota: 4.8,
     totalAvaliacoes: 127,
     corCapa: "bg-rose-400",
+    foto: "https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=600&h=300&fit=crop&auto=format",
     tags: ["Cabelo", "Unhas", "Manicure", "Pedicure"],
     precoMinimo: 35,
     endereco: "Rua das Flores, 142 — Bela Vista",
@@ -110,6 +112,7 @@ export const saloes: Salao[] = [
     nota: 4.9,
     totalAvaliacoes: 312,
     corCapa: "bg-purple-500",
+    foto: "https://images.unsplash.com/photo-1560066984-138daaa0f8fb?w=600&h=300&fit=crop&auto=format",
     tags: ["Cabelo", "Coloração", "Tratamentos", "Estética"],
     precoMinimo: 80,
     endereco: "Av. Paulista, 890 — Bela Vista",
@@ -152,6 +155,7 @@ export const saloes: Salao[] = [
     nota: 4.7,
     totalAvaliacoes: 89,
     corCapa: "bg-slate-700",
+    foto: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600&h=300&fit=crop&auto=format",
     tags: ["Corte masculino", "Barba", "Infantil"],
     precoMinimo: 30,
     endereco: "Rua Augusta, 234 — Consolação",
@@ -194,6 +198,7 @@ export const saloes: Salao[] = [
     nota: 4.6,
     totalAvaliacoes: 54,
     corCapa: "bg-teal-500",
+    foto: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&h=300&fit=crop&auto=format",
     tags: ["Estética", "Sobrancelha", "Depilação", "Pele"],
     precoMinimo: 45,
     endereco: "Rua Oscar Freire, 512 — Jardins",
