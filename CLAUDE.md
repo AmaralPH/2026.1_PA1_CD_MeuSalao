@@ -27,14 +27,14 @@ O MeuSalão começa como plataforma de visibilidade e agendamento, mas a priorid
 ## Documentação
 
 - [README.md](README.md) — Descrição geral do projeto
-- [personas.md](personas.md) — Personas de clientes e donos de salão
-- [segmentos.md](segmentos.md) — Segmentos de cliente e subcategorias de serviço
-- [é, não é, faz, não faz.md](é,%20não%20é,%20faz,%20não%20faz.md) — Escopo do produto
-- [visaodoprotudo.md](visaodoprotudo.md) — Visão do produto
-- [jobstobedone.md](jobstobedone.md) — Jobs to Be Done por segmento
-- [jornadas.md](jornadas.md) — Jornadas de usuário (MVP Fase 1)
-- [detalhamentojornadas.md](detalhamentojornadas.md) — Jornadas de usuário detalhadas (MVP Fase 1)
-- [fases_roadmap_estrategico.md](fases_roadmap_estrategico.md) — Roadmap estratégico de negócio
-- [userstory.md](userstory.md) — User Stories do MVP Fase 1
-- [project-model-canvas.html](project-model-canvas.html) — Project Model Canvas
-- [PlanejamentoUsers.txt](PlanejamentoUsers.txt) — Link para planilha editável de planejamento de User Stories
+- [docs/personas.md](docs/personas.md) — Personas de clientes e donos de salão
+- [docs/segmentos.md](docs/segmentos.md) — Segmentos de cliente e subcategorias de serviço
+- [docs/é, não é, faz, não faz.md](docs/é,%20não%20é,%20faz,%20não%20faz.md) — Escopo do produto
+- [docs/visaodoprotudo.md](docs/visaodoprotudo.md) — Visão do produto
+- [docs/jobstobedone.md](docs/jobstobedone.md) — Jobs to Be Done por segmento
+- [docs/jornadas.md](docs/jornadas.md) — Jornadas de usuário (MVP Fase 1)
+- [docs/detalhamentojornadas.md](docs/detalhamentojornadas.md) — Jornadas de usuário detalhadas (MVP Fase 1)
+- [docs/fases_roadmap_estrategico.md](docs/fases_roadmap_estrategico.md) — Roadmap estratégico de negócio
+- [docs/userstory.md](docs/userstory.md) — User Stories do MVP Fase 1
+- [docs/project-model-canvas.html](docs/project-model-canvas.html) — Project Model Canvas
+- [docs/PlanejamentoUsers.txt](docs/PlanejamentoUsers.txt) — Link para planilha editável de planejamento de User Stories

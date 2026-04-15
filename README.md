@@ -49,7 +49,7 @@ Uma plataforma onde salões cadastram seus serviços, preços, horários e local
 
 | Documento | Descrição |
 |---|---|
-| [personas.md](personas.md) | Personas de clientes e donos de salão |
-| [segmentos.md](segmentos.md) | Segmentos de cliente e subcategorias de serviço |
-| [é, não é, faz, não faz.md](é,%20não%20é,%20faz,%20não%20faz.md) | Escopo do produto — o que a plataforma é, não é, faz e não faz |
+| [docs/personas.md](docs/personas.md) | Personas de clientes e donos de salão |
+| [docs/segmentos.md](docs/segmentos.md) | Segmentos de cliente e subcategorias de serviço |
+| [docs/é, não é, faz, não faz.md](docs/é,%20não%20é,%20faz,%20não%20faz.md) | Escopo do produto — o que a plataforma é, não é, faz e não faz |
 | [CLAUDE.md](CLAUDE.md) | Contexto do projeto — estratégia de produto e princípios de integração |
