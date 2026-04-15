@@ -1,67 +1,91 @@
 import Link from "next/link";
-import { Sparkles, Search, CalendarCheck } from "lucide-react";
+import { Sparkles, Search, Star, CalendarCheck } from "lucide-react";
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-purple-50 flex flex-col md:flex-row">
-      {/* Left — purple branding panel */}
-      <div className="md:w-1/2 bg-gradient-to-br from-purple-700 to-purple-500 flex flex-col items-center justify-center p-12 text-white min-h-[40vh] md:min-h-screen">
-        <div className="w-28 h-28 bg-white/20 rounded-full flex items-center justify-center mb-8">
-          <Sparkles className="w-14 h-14 text-white" />
-        </div>
-        <h1 className="text-3xl md:text-4xl font-bold text-center mb-3">
-          Bem-vindo ao MeuSalão
-        </h1>
-        <p className="text-purple-100 text-center text-lg leading-relaxed max-w-xs">
-          A melhor plataforma para serviços de beleza
-        </p>
-      </div>
+    <div className="min-h-screen flex flex-col md:flex-row">
+      {/* Left — branding */}
+      <div className="md:w-1/2 bg-violet-900 relative overflow-hidden flex flex-col items-center justify-center p-12 text-white min-h-[45vh] md:min-h-screen">
+        {/* Decorative */}
+        <div className="absolute top-0 right-0 w-80 h-80 bg-violet-600/30 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-60 h-60 bg-fuchsia-600/20 rounded-full blur-2xl" />
 
-      {/* Right — action card */}
-      <div className="md:w-1/2 flex items-center justify-center p-8">
-        <div className="bg-white rounded-3xl shadow-xl p-8 w-full max-w-md">
-          <h2 className="text-3xl font-bold text-gray-900 mb-2">Descubra</h2>
-          <p className="text-gray-500 mb-8 leading-relaxed">
-            Encontre os melhores salões de beleza perto de você com avaliações reais
+        <div className="relative z-10 text-center">
+          <div className="w-24 h-24 bg-white/15 backdrop-blur-sm rounded-3xl flex items-center justify-center mx-auto mb-8 border border-white/20">
+            <Sparkles className="w-12 h-12 text-white" />
+          </div>
+          <h1 className="text-4xl md:text-5xl font-black mb-4 leading-tight tracking-tight">
+            Bem-vindo ao<br />MeuSalão
+          </h1>
+          <p className="text-violet-200 text-lg leading-relaxed max-w-xs mx-auto">
+            A melhor plataforma para descobrir e agendar serviços de beleza
           </p>
 
-          {/* Feature icons */}
-          <div className="flex justify-around mb-10">
+          {/* Social proof */}
+          <div className="flex items-center justify-center gap-6 mt-10">
+            <div className="text-center">
+              <p className="text-2xl font-black">4</p>
+              <p className="text-xs text-violet-300">Salões</p>
+            </div>
+            <div className="w-px h-10 bg-white/20" />
+            <div className="text-center">
+              <p className="text-2xl font-black">4.7+</p>
+              <p className="text-xs text-violet-300">Avaliação</p>
+            </div>
+            <div className="w-px h-10 bg-white/20" />
+            <div className="text-center">
+              <p className="text-2xl font-black">SP</p>
+              <p className="text-xs text-violet-300">Cidade</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Right — actions */}
+      <div className="md:w-1/2 bg-gray-50 flex items-center justify-center p-8">
+        <div className="w-full max-w-md">
+          <div className="flex items-center gap-2 mb-8">
+            <div className="w-8 h-8 bg-violet-700 rounded-xl flex items-center justify-center">
+              <Sparkles className="w-4 h-4 text-white" />
+            </div>
+            <span className="font-black text-gray-900 text-lg">MeuSalão</span>
+          </div>
+
+          <h2 className="text-3xl font-black text-gray-900 mb-2 leading-tight">
+            Como você quer<br />usar o app?
+          </h2>
+          <p className="text-gray-500 mb-8">Escolha seu perfil para começar</p>
+
+          {/* Feature row */}
+          <div className="flex gap-6 mb-10">
             {[
               { icon: Search, label: "Buscar" },
-              { icon: Sparkles, label: "Comparar" },
+              { icon: Star, label: "Comparar" },
               { icon: CalendarCheck, label: "Agendar" },
             ].map(({ icon: Icon, label }) => (
-              <div key={label} className="flex flex-col items-center gap-2">
-                <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
-                  <Icon className="w-5 h-5 text-purple-600" />
+              <div key={label} className="flex flex-col items-center gap-2 flex-1">
+                <div className="w-12 h-12 bg-violet-100 rounded-2xl flex items-center justify-center">
+                  <Icon className="w-5 h-5 text-violet-700" />
                 </div>
-                <span className="text-sm text-gray-600 font-medium">{label}</span>
+                <span className="text-xs font-semibold text-gray-600">{label}</span>
               </div>
             ))}
           </div>
 
-          {/* Dots indicator */}
-          <div className="flex justify-center gap-2 mb-8">
-            <div className="w-6 h-2 bg-purple-600 rounded-full" />
-            <div className="w-2 h-2 bg-gray-200 rounded-full" />
-            <div className="w-2 h-2 bg-gray-200 rounded-full" />
-          </div>
-
-          <div className="flex flex-col gap-3">
-            <Link href="/cliente">
-              <button className="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 rounded-2xl transition-colors text-lg">
-                Sou Cliente
+          <div className="space-y-3">
+            <Link href="/cliente" className="block">
+              <button className="w-full bg-violet-700 hover:bg-violet-800 text-white font-black py-4 rounded-2xl transition-all hover:shadow-lg hover:-translate-y-0.5 text-base">
+                Sou Cliente →
               </button>
             </Link>
-            <Link href="/salao/onboarding">
-              <button className="w-full border-2 border-purple-200 text-purple-700 font-bold py-4 rounded-2xl hover:bg-purple-50 transition-colors text-lg">
+            <Link href="/salao/onboarding" className="block">
+              <button className="w-full bg-white hover:bg-gray-50 text-gray-800 font-bold py-4 rounded-2xl border-2 border-gray-200 hover:border-violet-300 transition-all text-base">
                 Sou Dono de Salão
               </button>
             </Link>
           </div>
 
-          <p className="text-center text-xs text-gray-400 mt-6">Protótipo MVP Fase 1 · 2026</p>
+          <p className="text-center text-xs text-gray-400 mt-8">Protótipo MVP Fase 1 · 2026</p>
         </div>
       </div>
     </div>

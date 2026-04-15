@@ -137,4 +137,5 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+  .card-hover { @apply transition-all duration-200 hover:-translate-y-1 hover:shadow-lg; }
 }
